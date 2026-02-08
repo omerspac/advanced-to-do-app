@@ -11,17 +11,20 @@ database_url = settings.DATABASE_URL
 if database_url.startswith("postgresql://"):
     database_url = database_url.replace("postgresql://", "postgresql+asyncpg://", 1)
 
-# Clean up query params for asyncpg
+# Parse URL (always needed)
 parsed = urlparse(database_url)
-qs = parse_qs(parsed.query)
 
-# Remove unsupported keys
-for key in ["sslmode", "channel_binding", "options"]:
-    qs.pop(key, None)
+if database_url.startswith("postgresql+asyncpg://"):
+    # Clean up query params for asyncpg
+    qs = parse_qs(parsed.query)
 
-# Rebuild URL without forcing ssl query params; we'll pass SSL via connect_args
-new_query = urlencode(qs, doseq=True)
-database_url = urlunparse(parsed._replace(query=new_query))
+    # Remove unsupported keys
+    for key in ["sslmode", "channel_binding", "options"]:
+        qs.pop(key, None)
+
+    # Rebuild URL without forcing ssl query params; we'll pass SSL via connect_args
+    new_query = urlencode(qs, doseq=True)
+    database_url = urlunparse(parsed._replace(query=new_query))
 
 # Determine connect args: enable SSL for non-local hosts (e.g., Neon)
 connect_args = {}

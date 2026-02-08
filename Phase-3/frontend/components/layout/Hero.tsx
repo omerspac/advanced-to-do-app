@@ -29,12 +29,12 @@ export default function Hero({ userName = 'User', pending = 0, onPrimaryAction }
       >
         <div className="max-w-2xl">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-tight mb-4 text-foreground">
-            Welcome back, <span className="text-gradient italic">{userName}</span>
+            Welcome back, <span className="text-[#04a9fb]">{userName}</span>
             <span className="ml-2 inline-block text-lg font-medium align-middle opacity-60">—</span>
           </h1>
 
           <p className="text-lg opacity-70 font-medium mb-6">
-            You have <span className="font-black text-foreground">{pending}</span> pending initiatives. Activate the mission control to deploy your next objective.
+            You have <span className="font-black text-foreground">{pending}</span> pending initiatives.
           </p>
 
           <div className="flex items-center gap-4">
@@ -53,26 +53,6 @@ export default function Hero({ userName = 'User', pending = 0, onPrimaryAction }
           transition={{ duration: 0.7, delay: 0.08 }}
           className="w-full lg:w-96"
         >
-          {/* Decorative animated SVG card */}
-          <div className="glass-premium rounded-2xl p-6 border border-white/10 shadow-xl">
-            <svg viewBox="0 0 320 180" className="w-full h-36" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-              <defs>
-                <linearGradient id="g1" x1="0" x2="1">
-                  <stop offset="0%" stopColor="#6366F1" stopOpacity="0.9" />
-                  <stop offset="100%" stopColor="#F43F5E" stopOpacity="0.6" />
-                </linearGradient>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#g1)" rx="16" ry="16" opacity="0.12" />
-              <g fill="none" stroke="rgba(255,255,255,0.16)" strokeWidth="1">
-                <path d="M10 140 Q80 20 160 140 T310 140" strokeOpacity="0.5" />
-              </g>
-            </svg>
-
-            <div className="mt-3">
-              <h4 className="text-lg font-black">TaskFlow Snapshot</h4>
-              <p className="text-sm opacity-70">Trends, completion velocity, and quick actions — condensed into one glance.</p>
-            </div>
-          </div>
         </motion.div>
       </motion.div>
     </section>

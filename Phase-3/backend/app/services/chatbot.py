@@ -49,7 +49,7 @@ class ChatbotService:
         
         ### MULTILINGUAL CAPABILITIES:
         - You understand and can respond in **English**, **Roman Urdu/Hindi** (e.g., "Mera task add kardo"), and **Urdu** (e.g., "میرا کام شامل کریں").
-        - If the user talks in Roman Urdu, you should respond in Roman Urdu.
+        - **IMPORTANT:** If the user's message is primarily in Roman Urdu/Hindi or Urdu, you MUST start your response with `[LANGUAGE: URDU]`. Otherwise, respond in English.
         - If the user asks you to talk in Urdu ("Urdu mein baat karo"), switch to Urdu script.
         
         ### CORE TOOLS:
@@ -143,7 +143,7 @@ class ChatbotService:
 
         return result
 
-    def _generate_tool_response(self, tool_calls_executed: List[Dict[str, Any]], user_language: str = "ur") -> str:
+    def _generate_tool_response(self, tool_calls_executed: List[Dict[str, Any]], user_language: str = "en") -> str:
         """Generate a natural confirmation message based on tool results."""
         if not tool_calls_executed:
             return "Main samajh nahi paya, kya aap phir se bol sakte hain?" if user_language == "ur" else "I couldn't understand that. Could you repeat?"
@@ -185,7 +185,7 @@ class ChatbotService:
 
             # Special handling for list_tasks
             if tool == "list_tasks":
-                tasks = result.get("tasks", [])
+                tasks = result # Corrected: result is already the list
                 if not tasks:
                     msgs.append("Aapki list abhi khali hai." if lang == "ur" else "Your list is empty.")
                 else:
@@ -290,6 +290,7 @@ class ChatbotService:
         iteration = 0
         all_tool_calls = []
         current_input = message
+        detected_user_language = "en" # Default to English
 
         while iteration < max_iterations:
             iteration += 1
@@ -311,6 +312,12 @@ class ChatbotService:
                 preamble=personalized_prompt
             )
 
+            # Check for language tag in Cohere's response
+            if response.text.strip().startswith("[LANGUAGE: URDU]"):
+                detected_user_language = "ur"
+                # Remove the tag from the actual response text
+                response.text = response.text.replace("[LANGUAGE: URDU]", "", 1).strip()
+            
             # Check for tool calls
             executed = await self._process_tool_calls(db, user_id, response.text, conversation_id)
             
@@ -319,7 +326,7 @@ class ChatbotService:
                 
                 # OPTIMIZATION: Instead of calling AI again, generate an immediate confirmation
                 # This makes the response ~2x faster.
-                final_text = self._generate_tool_response(executed, user_language="ur")
+                final_text = self._generate_tool_response(executed, user_language=detected_user_language)
                 
                 # Save final response to DB
                 await self.message_repo.create(

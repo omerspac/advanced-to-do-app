@@ -22,18 +22,17 @@ export default function HeroFull() {
       >
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-black tracking-widest uppercase mb-6 animate-glow">
           <Sparkles className="w-4 h-4" />
-          New — Landing Experience
+          New — To-Do Experience
         </div>
 
         <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] text-foreground mb-6">
-          A Todo Experience
+          An Entirely New
           <br />
-          Like You've Never Seen.
+          To-Do Experience
         </h1>
 
         <p className="text-xl md:text-2xl opacity-80 body max-w-3xl mx-auto mb-10">
-          A fresh take on productivity: glass surfaces, kinetic micro-interactions,
-          and delightful motion—crafted to make planning feel aspirational.
+        A fresh perspective on productivity—glass-like surfaces, kinetic micro-interactions, and graceful motion that make planning feel aspirational.
         </p>
 
         <div className="flex items-center justify-center gap-4">

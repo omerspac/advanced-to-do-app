@@ -29,10 +29,10 @@ export default function Header() {
           <div className="flex items-center gap-8">
             <Link href="/" className="flex items-center gap-3 transition-all duration-300 hover:scale-105 active:scale-95 group">
               <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary text-white shadow-lg shadow-primary/30 group-hover:shadow-primary/50 group-hover:rotate-6 transition-all duration-500">
-                <CheckCircle2 className="w-6 h-6" strokeWidth={3} />
+                <Layout className="w-6 h-6" />
               </div>
               <h1 className="text-2xl font-black tracking-tighter text-foreground leading-none">
-                TaskFlow <span className="text-primary italic">Pro</span>
+                Omtodo
               </h1>
             </Link>
 
@@ -65,14 +65,6 @@ export default function Header() {
               <div className="w-px h-5 bg-ui-border/30 mx-1" />
               <UserMenu />
             </div>
-
-            {!pathname?.includes('/dashboard') && (
-              <Link href="/dashboard" className="hidden sm:block">
-                <button className="px-5 py-2.5 bg-foreground text-background text-sm font-black rounded-xl hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-foreground/10">
-                  Go to Workspace
-                </button>
-              </Link>
-            )}
           </div>
         </div>
       </div>

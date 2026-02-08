@@ -14,8 +14,8 @@ export default function HomePage() {
       <section className="section-horizontal section-vertical bg-muted/30 relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="h2 mb-4">Why TaskFlow Pro?</h2>
-            <p className="body">Superior design and performance for your workflow.</p>
+            <h2 className="h2 mb-4">Why Omtodo?</h2>
+            <p className="body">Smart design and performance for your workflow.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -62,11 +62,10 @@ export default function HomePage() {
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white shadow-lg shadow-primary/30">
                 <CheckCircle2 className="w-5 h-5" strokeWidth={3} />
               </div>
-              <h3 className="text-xl font-black tracking-tighter">TaskFlow Pro</h3>
+              <h3 className="text-xl font-black tracking-tighter">Omtodo</h3>
             </div>
             <p className="body max-w-sm">
-              The premium way to organize your life and tasks. Beautifully designed,
-              intelligently built.
+              A better way to organize your life and tasks simple, beautiful, and smart.
             </p>
           </div>
           <div className="space-y-4">
@@ -87,7 +86,7 @@ export default function HomePage() {
           </div>
         </div>
         <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-ui-border/10 text-center text-sm font-bold opacity-30">
-          &copy; 2026 TaskFlow Pro. All rights reserved.
+          &copy; 2026 Omtodo. All rights reserved.
         </div>
       </footer>
     </div>

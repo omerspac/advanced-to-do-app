@@ -8,6 +8,7 @@ class ChatApiClient {
 
   constructor() {
     this.baseUrl = API_BASE_URL;
+    console.log('ChatApiClient initialized with URL:', this.baseUrl); // Added log
   }
 
   private getToken(): string | null {

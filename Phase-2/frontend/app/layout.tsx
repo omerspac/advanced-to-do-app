@@ -18,7 +18,7 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-  title: 'Todo App - Flagship',
+  title: 'Omtodo',
   description: 'A stunning, professional-grade todo application',
 }
 

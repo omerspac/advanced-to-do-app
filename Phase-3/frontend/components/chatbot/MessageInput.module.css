@@ -31,7 +31,7 @@
   height: 40px;
   border-radius: 50%;
   border: none;
-  background-color: #10b981; /* emerald-500 */
+  background-color: #0284c7; /* emerald-500 */
   color: white;
   cursor: pointer;
   display: flex;
@@ -61,11 +61,11 @@
 }
 
 [data-theme='dark'] .sendButton {
-  background-color: #10b981;
+  background-color: #0284c7;
 }
 
 [data-theme='dark'] .sendButton:hover:not(:disabled) {
-  background-color: #059669;
+  background-color: #0369a1;
 }
 
 [data-theme='dark'] .sendButton:disabled {

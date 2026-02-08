@@ -16,7 +16,7 @@ router = APIRouter()
 async def list_tasks(
     current_user: CurrentUserDep,
     session: SessionDep,
-    status: Optional[str] = Query(None, regex="^(all|pending|completed)$")
+    status: Optional[str] = Query(None, pattern="^(all|pending|completed)$")
 ):
     query = select(Task).where(Task.user_id == current_user)
 
