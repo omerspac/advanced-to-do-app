@@ -9,3 +9,4 @@ passlib[bcrypt]
 python-multipart
 cohere
 aiosqlite
+psycopg2-binary

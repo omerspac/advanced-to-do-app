@@ -14,18 +14,19 @@ from .models import user, task # Import models to register them with SQLModel
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await create_db_and_tables()
     yield
 
 app = FastAPI(title=settings.PROJECT_NAME, lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origin_regex=r"http?://(localhost|127\.0\.0\.1|0\.0\.0\.0)(:\d+)?",
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    # allow_origins=["*"],  # For local development, you can allow all origins
 )
+
 
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
